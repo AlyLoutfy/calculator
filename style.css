@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  background-color: #0D7377;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 100px;
+}
+
+/* Main */
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  margin-top: 50px;
+}
+
+.calculator {
+  background-color: white;
+  min-height: 550px;
+  width: 400px;
+  border-radius: 12px;
+}
