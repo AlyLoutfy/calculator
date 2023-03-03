@@ -108,3 +108,10 @@ body {
 .fa-github:hover {
   transform: rotate(360deg) scale(1.4);
 }
+
+@media screen and (max-width: 767px) {
+  :root {
+    touch-action: pan-x pan-y;
+    height: 100% 
+}
+}
