@@ -1,17 +1,22 @@
 const numberButtons = document.querySelectorAll('[data-number]');
 const operatorButtons = document.querySelectorAll('[data-operator]');
+const percentButton = document.getElementById('percentBtn');
+const pointButton = document.getElementById('pointBtn');
 const clearButton = document.getElementById('clearBtn');
 const deleteButton = document.getElementById('deleteBtn');
 const equalButton = document.getElementById('equalBtn');
 const currentOperation = document.getElementById('currentOperation');
 const output = document.getElementById('output');
 
+let shouldReset = false;
 let operator = ''; 
 let firstNum;
 let secondNum = '';
 
 clearButton.addEventListener('click', eraseScreen);
 deleteButton.addEventListener('click', deleteVal);
+percentButton.addEventListener('click', percent);
+pointButton.addEventListener('click', addPoint);
 equalButton.addEventListener('click', displayResult);
 
 numberButtons.forEach((btn) => 
@@ -23,7 +28,7 @@ operatorButtons.forEach((btn) =>
 );
 
 function appendNum(num) {
-  if(currentOperation.textContent === '0')
+  if(currentOperation.textContent === '0' || shouldReset)
     eraseScreen();
   
   currentOperation.textContent += num;
@@ -39,6 +44,18 @@ function setOperator(op) {
   getFirstNumber();
   operator = op;
   currentOperation.textContent = `${firstNum} ${operator} `;
+}
+
+function addPoint() {
+  currentOperation.textContent += '.';
+}
+
+let percentInt = 0;
+
+function percent() {
+  percentInt += 2;
+  let temp = currentOperation.textContent / 100;
+  currentOperation.textContent = temp.toFixed(percentInt);
 }
 
 function add(x, y) {
@@ -67,13 +84,22 @@ function operate(op, x, y) {
   } else if (op === "÷") {
     return divide(x,y);
   } else {
-    return "Operation not available";
+    return "NaN";
   }
+}
+
+function getLength(number) {
+  return number.toString().length;
 }
 
 function displayResult() {
   let result = operate(operator, Number(firstNum), Number(secondNum));
+  let length = getLength(result);
+  console.log(length);
+    
   output.textContent = result;
+
+  shouldReset = true;
 }
 
 function eraseScreen() {
@@ -82,6 +108,8 @@ function eraseScreen() {
   firstNum = 0;
   secondNum = '';
   operator = '';
+  percentInt = 0;
+  shouldReset = false;
 }
 
 function deleteVal() {
