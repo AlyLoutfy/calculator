@@ -1,8 +1,9 @@
 :root {
-  --background: #fff;
-  --font: #012340;
-  --calculator: #011526;
-  --screen: #012340;
+  --background: #013F4E;
+  --font: #fff;
+  --calculator: #212121;
+  --screen: #00718F;
+  --buttons: #414141;
 }
 
 *,
@@ -48,33 +49,62 @@ body {
 .screen {
   background-color: var(--screen);
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: right;
+  text-align: right;
   padding: 15px;
-  font-size: 25px;
-  border-radius: 12px;
-  margin-top: 20px;
-  height: 120px;
+  font-size: 40px;
+  border-radius: 5px;
+  margin: 20px 0px;
   width: 90%;
-  margin-bottom: 30px;
+  min-height: 123px;
 }
 
 .buttons-grid {
   display: grid;
-  gap: 25px;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-flow: row;
+  gap: 10px;
 }
 
 .buttons-grid button {
-  background-color: var(--background);
+  background-color: var(--buttons);
   color: var(--font);
   cursor: pointer;
-  width: 53px;
-  height: 53px;
+  width: 70px;
+  height: 70px;
   border: none;
-  border-radius: 15px;
+  border-radius: 5px;
   font-size: 20px;
   font-weight: 600;
+  transition: all .15s ease-in-out;
+}
+
+.buttons-grid button:hover  {
+  background-color: var(--screen);
+  transform: translateY(-0.2rem);
+}
+
+#equalBtn {
+  grid-column: 3 / 5;
+  width: 150px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 15px;
+  font-size: 20px;
+}
+
+.fa-github {
+  color: var(--font);
+  font-size: 24px;
+  transition: transform 0.9s ease-in-out;
+}
+
+.fa-github:hover {
+  transform: rotate(360deg) scale(1.4);
 }
