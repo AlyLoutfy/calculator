@@ -1,3 +1,3 @@
 # Calculator
 
-Live Demo [🛠](https://alyloutfy.github.io/calculator/)
+Live Demo [Here](https://alyloutfy.github.io/calculator/) 🛠
