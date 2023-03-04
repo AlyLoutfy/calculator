@@ -41,7 +41,14 @@ function getFirstNumber() {
 }
 
 function setOperator(op) {
-  getFirstNumber();
+  if (operator != '') {
+    displayResult();
+    firstNum = output.textContent;
+    secondNum = '';
+  } else {
+    getFirstNumber();
+  }
+
   operator = op;
   currentOperation.textContent = `${firstNum} ${operator} `;
 }
@@ -93,13 +100,14 @@ function getLength(number) {
 }
 
 function displayResult() {
+  console.log(firstNum)
+  console.log(secondNum)
   let result = operate(operator, Number(firstNum), Number(secondNum));
   let length = getLength(result);
-  console.log(length);
-    
+
   output.textContent = result;
 
-  shouldReset = true;
+  // shouldReset = true;
 }
 
 function eraseScreen() {
