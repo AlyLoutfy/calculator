@@ -54,6 +54,9 @@ function setOperator(op) {
 }
 
 function addPoint() {
+  if (operator != '') {
+    secondNum += '.';
+  } 
   currentOperation.textContent += '.';
 }
 
