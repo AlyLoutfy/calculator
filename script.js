@@ -105,12 +105,14 @@ function getLength(number) {
 function displayResult() {
   console.log(firstNum)
   console.log(secondNum)
-  let result = operate(operator, Number(firstNum), Number(secondNum));
+  let result = roundResult(operate(operator, Number(firstNum), Number(secondNum)));
   let length = getLength(result);
 
   output.textContent = result;
+}
 
-  // shouldReset = true;
+function roundResult(number) {
+  return Math.round(number * 1000) / 1000
 }
 
 function eraseScreen() {
@@ -124,7 +126,10 @@ function eraseScreen() {
 }
 
 function deleteVal() {
-  let currVal = currentOperation.textContent;
-  let temp = Number(currVal);
-  currentOperation.textContent = Math.floor(temp / 10);
+  if (operator != '') {
+    secondNum = Math.floor(secondNum / 10);
+  }
+  currentOperation.textContent = currentOperation.textContent
+    .toString()
+    .slice(0, -1)
 }
